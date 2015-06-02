@@ -1,0 +1,12 @@
+<% if @task.errors.any? %>
+  <h2>
+    Please correct the following <%= pluralize(@task.errors.count, "error") %>
+  </h2>
+  <p>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+    </ul>
+    <% end %>
+  </p>    
+<% end %>

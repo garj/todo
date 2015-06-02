@@ -6,7 +6,8 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    @tasks_not_done = Task.where(is_done: false)
+    @tasks_done = Task.where(is_done: true)
   end
   
   def new
@@ -18,7 +19,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @task
     else
-      #todo:what if validation fails
+      render :new
     end
   end
 
@@ -27,13 +28,13 @@ class TasksController < ApplicationController
     redirect_to @task
   end
   
-   def destroy
-     @task.destroy 
-     redirect_to tasks_url
-   end
+  def destroy
+   @task.destroy 
+   redirect_to tasks_url
+  end
   
   private
     def set_params
-      task_params = params.require(:task).permit(:title, :description)     
+      task_params = params.require(:task).permit(:title, :description, :is_done)     
     end
 end

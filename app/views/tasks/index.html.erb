@@ -1,15 +1,26 @@
 <h1>All Tasks</h1>
 
 <p>
-  <% @tasks.each do |t| %>
-    <ul>
-      <li> <%= link_to t.title, t %> </li>
-      <li> <%= t.description %> </li>      
-    </ul>
+  <%= link_to "Add New Task", new_task_path %>
+</p>
 
+<h2>To do</h2>
+<p>
+  <% @tasks_not_done.each do |t| %>
+    <div>
+      <%= check_box_tag(t.is_done) %>
+      <%= link_to t.title, task_path(t) %>
+    </div>
   <% end %>
 </p>
 
+<h2>Done</h2>
 <p>
-  <%= link_to "Add New Task", new_task_path %>
+  <% @tasks_done.each do |t| %>
+    <div>
+      <%= check_box_tag(t.is_done) %>
+      <%= link_to t.title, task_path(t) %>
+    </div>
+  <% end %>  
 </p>
+

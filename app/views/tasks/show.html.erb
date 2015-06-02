@@ -3,6 +3,17 @@
 <p>
   <%= @task.description %>
 </p>
+<p>
+  Done: <%= @task.is_done %>
+</p>
+
+<p>
+  <%= form_for @task, url: {action: "update"} do |f| %>
+    <%= f.check_box :is_done %>
+    <%= f.label :is_done %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</p>
 
 <p>
   <%= link_to "Edit", edit_task_path %>
