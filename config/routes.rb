@@ -55,5 +55,9 @@ Rails.application.routes.draw do
   #   end
   
   root 'tasks#index'
-  resources :tasks
+  resources :tasks do 
+    collection do
+      put 'complete'
+    end
+  end
 end

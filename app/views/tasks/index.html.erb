@@ -1,26 +1,37 @@
 <h1>All Tasks</h1>
 
+<p class="test">
+  Hello
+</p>
+
 <p>
   <%= link_to "Add New Task", new_task_path %>
 </p>
 
 <h2>To do</h2>
+
 <p>
-  <% @tasks_not_done.each do |t| %>
-    <div>
-      <%= check_box_tag(t.is_done) %>
-      <%= link_to t.title, task_path(t) %>
-    </div>
+  <%= form_tag complete_tasks_path, method: :put do %>
+    <% if !@tasks_not_done.nil? %>
+      <% @tasks_not_done.each do |t| %>
+        <div>
+          <%= check_box_tag( "is_done_ids[]", t.id ) %>
+          <%= link_to t.title, task_path(t), class: "task-item-done" %>
+        </div>
+      <% end %>
+      <%= submit_tag "Update" %>
+    <% end %>
   <% end %>
 </p>
 
 <h2>Done</h2>
 <p>
-  <% @tasks_done.each do |t| %>
-    <div>
-      <%= check_box_tag(t.is_done) %>
-      <%= link_to t.title, task_path(t) %>
-    </div>
-  <% end %>  
+  <% if !@tasks_done.nil? %>
+    <% @tasks_done.each do |t| %>
+      <div>
+        <%= check_box_tag(t.is_done) %>
+          <%= link_to t.title, task_path(t), class: "task-item-not-done" %>
+      </div>
+    <% end %> 
+  <% end %>
 </p>
-

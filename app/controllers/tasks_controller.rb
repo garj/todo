@@ -28,6 +28,12 @@ class TasksController < ApplicationController
     redirect_to @task
   end
   
+  def complete
+
+    Task.where(id: params[:is_done_ids]).update_all(is_done: true)
+    redirect_to tasks_url
+  end
+  
   def destroy
    @task.destroy 
    redirect_to tasks_url
