@@ -1,8 +1,5 @@
 <h1>All Tasks</h1>
 
-<p class="test">
-  Hello
-</p>
 
 <p>
   <%= link_to "Add New Task", new_task_path %>
@@ -15,7 +12,7 @@
     <% if !@tasks_not_done.nil? %>
       <% @tasks_not_done.each do |t| %>
         <div class="task<%= t.id %>">
-          <%= check_box_tag( "is_done_ids[]", t.id ) %>
+          <%= check_box_tag( "is_done_ids[]", t.id, false, class: "checkbox_#{t.id}" ) %>
           <%= link_to t.title, task_path(t), class: "task-item-not-done" %>
         </div>
       <% end %>

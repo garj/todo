@@ -1,8 +1,9 @@
 <% if @completed_tasks.any? %>
   <% @completed_tasks.each do |task| %>
-    var classname = ".task" + <%= task.id %>
-    $temp = $(classname);
-    $(".done").append($temp);
+    $classname = $(".task" + <%= task.id %>);
+    $(".done").append($classname);
+    
+    $(".checkbox_" + <%= task.id %>).attr("checked", false);
   <% end %>
 <% end %>
 
