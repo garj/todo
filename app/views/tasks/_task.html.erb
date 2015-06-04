@@ -1,0 +1,4 @@
+<div class="task<%= task.id %>">
+  <%= check_box_tag( "is_done_ids[]", task.id, false, class: "checkbox_#{task.id}" ) %>
+  <%= link_to task.title, task_path(task), class: "task-item-not-done" %>
+</div>

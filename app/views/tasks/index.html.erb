@@ -23,15 +23,8 @@
 
 <%= form_tag complete_tasks_path, method: :put, remote: true do %>
   <div class="not-done">  
-    <% if !@tasks_not_done.nil? %>
-      <% @tasks_not_done.each do |t| %>
-        <div class="task<%= t.id %>">
-          <%= check_box_tag( "is_done_ids[]", t.id, false, class: "checkbox_#{t.id}" ) %>
-          <%= link_to t.title, task_path(t), class: "task-item-not-done" %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>  
+    <%= render @tasks_not_done %>
+  </div>
   <div>
     <%= submit_tag "Mark As Complete" %>
   </div>       

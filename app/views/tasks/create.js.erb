@@ -1,9 +1,4 @@
 $(".add-task").toggle();
-
-$newTaskItem = $('<div class= task<%=@task.id %> >' +
-                 '<input type="checkbox" class= "checkbox_<%=@task.id %>" id="is_done_ids_" name="is_done_ids[]" value= <%=@task.id %>>' +
-                 '<a class="task-item-not-done" href="/tasks/<%=@task.id %>">' +
-                 ' <%= @task.title%></a></div>');
-$(".not-done").append($newTaskItem);
+$(".not-done").append("<%= j render @task %>");
 
 
