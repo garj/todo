@@ -1,0 +1,8 @@
+<% if @completed_tasks.any? %>
+  <% @completed_tasks.each do |task| %>
+    var classname = ".task" + <%= task.id %>
+    $temp = $(classname);
+    $(".done").append($temp);
+  <% end %>
+<% end %>
+

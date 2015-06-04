@@ -25,13 +25,18 @@ class TasksController < ApplicationController
 
   def update
     @task.update(set_params)
-    redirect_to @task
+    redirect_to tasks_url
   end
   
   def complete
+    @completed_tasks = Task.where(id: params[:is_done_ids])
+    @completed_tasks.update_all(is_done: true)
+    @completed_tasks = @completed_tasks.to_a
 
-    Task.where(id: params[:is_done_ids]).update_all(is_done: true)
-    redirect_to tasks_url
+    respond_to do |format|
+      format.html {redirect_to tasks_url}
+      format.js 
+    end
   end
   
   def destroy

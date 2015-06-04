@@ -10,28 +10,28 @@
 
 <h2>To do</h2>
 
-<p>
-  <%= form_tag complete_tasks_path, method: :put do %>
+<div class="not-done">
+  <%= form_tag complete_tasks_path, method: :put, remote: true do %>
     <% if !@tasks_not_done.nil? %>
       <% @tasks_not_done.each do |t| %>
-        <div>
+        <div class="task<%= t.id %>">
           <%= check_box_tag( "is_done_ids[]", t.id ) %>
-          <%= link_to t.title, task_path(t), class: "task-item-done" %>
+          <%= link_to t.title, task_path(t), class: "task-item-not-done" %>
         </div>
       <% end %>
-      <%= submit_tag "Update" %>
+      <%= submit_tag "Mark As Complete" %>
     <% end %>
   <% end %>
-</p>
+</div>
 
 <h2>Done</h2>
-<p>
+<div class="done">
   <% if !@tasks_done.nil? %>
     <% @tasks_done.each do |t| %>
       <div>
         <%= check_box_tag(t.is_done) %>
-          <%= link_to t.title, task_path(t), class: "task-item-not-done" %>
+          <%= link_to t.title, task_path(t), class: "task-item-done" %>
       </div>
     <% end %> 
   <% end %>
-</p>
+</div>
