@@ -11,13 +11,19 @@ class TasksController < ApplicationController
   end
   
   def new
-    @task = Task.new
+    respond_to do |format|
+      format.html {@task = Task.new}
+      format.js
+    end
   end
 
   def create
     @task = Task.create(set_params)
     if @task.save
-      redirect_to @task
+      respond_to do |format|
+        format.html {redirect_to @task}
+        format.js
+      end
     else
       render :new
     end

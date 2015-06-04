@@ -1,14 +1,28 @@
 <h1>All Tasks</h1>
 
-
 <p>
-  <%= link_to "Add New Task", new_task_path %>
+  <%= link_to "Add New Task", new_task_path, remote: true %>
 </p>
+
+<div class="add-task">
+  <%= form_for(Task.new, class: "to-do-form", remote: true) do |f| %>
+    <div>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <%= f.submit "Add" %>
+  <% end %>
+</div>
 
 <h2>To do</h2>
 
-<div class="not-done">
-  <%= form_tag complete_tasks_path, method: :put, remote: true do %>
+<%= form_tag complete_tasks_path, method: :put, remote: true do %>
+  <div class="not-done">  
     <% if !@tasks_not_done.nil? %>
       <% @tasks_not_done.each do |t| %>
         <div class="task<%= t.id %>">
@@ -16,10 +30,13 @@
           <%= link_to t.title, task_path(t), class: "task-item-not-done" %>
         </div>
       <% end %>
-      <%= submit_tag "Mark As Complete" %>
     <% end %>
-  <% end %>
-</div>
+  </div>  
+  <div>
+    <%= submit_tag "Mark As Complete" %>
+  </div>       
+<% end %>
+
 
 <h2>Done</h2>
 <div class="done">
