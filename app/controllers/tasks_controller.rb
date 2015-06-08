@@ -46,8 +46,12 @@ class TasksController < ApplicationController
   end
   
   def destroy
-   @task.destroy 
-   redirect_to tasks_url
+    @task.destroy 
+   
+    respond_to do |format|
+     format.html {redirect_to tasks_url}
+     format.js
+    end
   end
   
   private

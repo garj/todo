@@ -32,7 +32,6 @@
     </div>
   </div>
   
-
   <div style="clear: both;">
     <%= form_tag complete_tasks_path, method: :put, remote: true do %>
       <div class="not-done">  
@@ -46,12 +45,6 @@
   
   <h3>Done</h3>
   <div class="done">
-    <% @tasks_done.each do |t| %>
-      <div>
-        <%= check_box_tag(t.is_done) %>
-          <%= link_to t.title, task_path(t), class: "task-item-done" %>
-      </div>
-    <% end %> 
+    <%= render @tasks_done %>
   </div>
-
 </div>
