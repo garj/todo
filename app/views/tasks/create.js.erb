@@ -1,5 +1,8 @@
-$(".add-task").toggle();
 $(".not-done").append("<%= j render @task %>");
+
+$('#myModal').modal('hide');
+$('.new-task-title').val("");
+$('.new-task-description').val("");
 
 $classname = $('.task<%=@task.id%>');
 
@@ -9,3 +12,4 @@ $($classname).iCheck({
 });
 
 $classname.css({'background-color':'#88ff88'}).animate({'background-color':'#FFFFFF'}, 1000);
+

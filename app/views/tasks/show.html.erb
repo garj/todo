@@ -1,22 +1,10 @@
-<h1> <%= @task.title %></h1>
+<h4> <%= @task.title %></h1>
 
 <p>
   <%= @task.description %>
 </p>
-<p>
-  Done: <%= @task.is_done %>
-</p>
 
 <p>
-  <%= form_for @task, url: {action: "update"} do |f| %>
-    <%= f.check_box :is_done %>
-    <%= f.label :is_done %>
-    <%= f.submit "Submit" %>
-  <% end %>
-</p>
-
-<p>
-  <%= link_to "Edit", edit_task_path %>
-  <%= link_to "Delete Task", task_path(@task), method: :delete, data: {confirm: 'Are you sure'} %>
-  <%= link_to "Home", tasks_path %>
+  <%= link_to "Edit", edit_task_path %> |
+  <%= link_to "Back", tasks_path %>
 </p>

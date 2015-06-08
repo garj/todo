@@ -5,30 +5,37 @@
     <h3>To do</h3>    
   </div>
   
-  <%= link_to "Add New Task", new_task_path, remote: true, class: "btn btn-primary add-new-task-button" %>
+  <!-- Button to trigger modal -->
+  <a href="#myModal" role="button" class="btn add-new-task-button" data-toggle="modal" data-target="#myModal">Add Task</a>
 
-  <div class="add-task" style="clear: both;">
-    <div class="form-horizontal">
-      <%= form_for(Task.new, class: "to-do-form", remote: true) do |f| %>
-        <div class="form-group">
-          <%= f.label :title, class: "col-sm-3 control-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :title, autofocus: true, class: "form-control" %>
-          </div>
+  <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">Add New Task</h4>
         </div>
-        
-        <div class="form-group">
-          <%= f.label :description, class: "col-sm-3 control-label" %>
-          <div class="col-sm-6">
-            <%= f.text_area :description, cols:20, row:50, class: "form-control" %>
+        <%= form_for(Task.new, remote:true) do |f| %>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <%= f.label :title %>
+                <%= f.text_field :title, class: "form-control new-task-title", autofocus: true %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= f.label :description %>
+                <%= f.text_field :description, class: "form-control new-task-description", rows: 3 %>
+              </div>
+            </div>
           </div>
-        </div class="form-group">
-        <div class="form-group">
-          <div class="col-sm-offset-3 col-sm-6">
-            <%= f.submit "Add" %>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.submit "Add", class: "btn btn-success"%>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   
@@ -47,4 +54,5 @@
   <div class="done">
     <%= render @tasks_done %>
   </div>
+  
 </div>
