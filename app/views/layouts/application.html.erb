@@ -7,8 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to "todo app", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "button1", '#' %></li>
+          <li><%= link_to "button2", '#' %></li>
+          <li><%= link_to "button3", '#' %></li>
+        </ul>
+      </nav>
+    </div>  
+  </header>
+  <div class="container">
+    <%= yield %>
+  </div>
 </body>
 </html>

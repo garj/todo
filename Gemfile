@@ -48,3 +48,4 @@ group :production do
 end
 
 gem 'bootflat-rails'
+gem 'jquery-ui-rails'

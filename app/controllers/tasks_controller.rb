@@ -22,7 +22,7 @@ class TasksController < ApplicationController
     if @task.save
       respond_to do |format|
         format.html {redirect_to @task}
-        format.js
+        format.js {@newly_added_task = @task}
       end
     else
       render :new

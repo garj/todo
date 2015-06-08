@@ -1,4 +1,11 @@
 $(".add-task").toggle();
 $(".not-done").append("<%= j render @task %>");
 
+$classname = $('.task' + <%=@task.id%>);
 
+$($classname).iCheck({
+    checkboxClass: 'icheckbox_flat',
+    increaseArea: '20%'
+});
+
+$classname.css({'background-color':'#88ff88'}).animate({'background-color':'#FFFFFF'}, 1000);

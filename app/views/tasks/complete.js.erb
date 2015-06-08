@@ -2,6 +2,7 @@
   <% @completed_tasks.each do |task| %>
     $classname = $(".task" + <%= task.id %>);
     $(".done").append($classname);
+    $classname.css({'background-color':'#88ff88'}).animate({'background-color':'#FFFFFF'}, 1000); 
     
     $(".checkbox_" + <%= task.id %>).attr("checked", false);
   <% end %>
