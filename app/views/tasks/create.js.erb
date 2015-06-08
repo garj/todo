@@ -1,7 +1,7 @@
 $(".add-task").toggle();
 $(".not-done").append("<%= j render @task %>");
 
-$classname = $('.task' + <%=@task.id%>);
+$classname = $('.task<%=@task.id%>');
 
 $($classname).iCheck({
     checkboxClass: 'icheckbox_flat',
